@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="appMain">#E1F6F4</color>
+    <color name="semiTransparentColor">#90FFFFFF</color>
 </resources>

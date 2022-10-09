@@ -1,4 +1,4 @@
-package com.sparklead.menotes.ui.Activities
+package com.sparklead.menotes.ui.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent

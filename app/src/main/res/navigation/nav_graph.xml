@@ -7,20 +7,30 @@
 
     <fragment
         android:id="@+id/notesFragment"
-        android:name="com.sparklead.menotes.ui.Fragment.NotesFragment"
+        android:name="com.sparklead.menotes.ui.fragment.NotesFragment"
         android:label="fragment_notes"
         tools:layout="@layout/fragment_notes" >
         <action
             android:id="@+id/action_notesFragment_to_createNotesFragment"
-            app:destination="@id/createNotesFragment" />
+            app:destination="@id/createNotesFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/createNotesFragment"
-        android:name="com.sparklead.menotes.ui.Fragment.CreateNotesFragment"
+        android:name="com.sparklead.menotes.ui.fragment.CreateNotesFragment"
         android:label="fragment_create_notes"
         tools:layout="@layout/fragment_create_notes" >
         <action
             android:id="@+id/action_createNotesFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoFragment"
+        android:name="com.sparklead.menotes.ui.fragment.TodoFragment"
+        android:label="fragment_todo"
+        tools:layout="@layout/fragment_todo" >
+        <action
+            android:id="@+id/action_todoFragment_to_createNotesFragment"
+            app:destination="@id/createNotesFragment" />
     </fragment>
 </navigation>

@@ -1,39 +1,78 @@
-package com.sparklead.menotes.ui.Activities
+package com.sparklead.menotes.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.sparklead.menotes.R
 import com.sparklead.menotes.databinding.ActivityDashboardBinding
+import com.sparklead.menotes.ui.fragment.CreateNotesFragment
+import com.sparklead.menotes.ui.fragment.NotesFragment
+import com.sparklead.menotes.ui.fragment.TodoFragment
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
-class DashboardActivity : AppCompatActivity() {
+
+class DashboardActivity : BaseActivity() {
 
     private lateinit var navController : NavController
-    lateinit var binding : ActivityDashboardBinding
+    private var mCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-        navController = findNavController(R.id.fragmentContainerView)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val fragmentNotes = NotesFragment()
+        val fragmentTodo = TodoFragment()
+        val fragmentCreateNotes = CreateNotesFragment()
+
+        replaceCurrentFragment(fragmentNotes)
 
         fab_notes.setOnLongClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_notesFragment_to_createNotesFragment)
+            mCount=0
+            replaceCurrentFragment(fragmentCreateNotes)
+//            it.findNavController().navigate(R.id.fragmentContainerView)
             true
         }
 
+        fab_todo.setOnClickListener {
+            mCount=0
+            replaceCurrentFragment(fragmentTodo)
+        }
 
-//        setupActionBarWithNavController(navController)
     }
 
-    override fun onNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onNavigateUp()
+    private fun replaceCurrentFragment(fragment: Fragment){
+        mCount=0
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainerView, fragment)
+            commit()
+        }
     }
+
+    override fun onBackPressed() {
+        if(mCount == 0) {
+            goNotesFragment()
+        }
+        else{
+            doubleBackToExit()
+        }
+        mCount++
+    }
+
+    private fun goNotesFragment(){
+        val fragmentHome = NotesFragment()
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainerView,fragmentHome)
+            commit()
+        }
+    }
+
 }

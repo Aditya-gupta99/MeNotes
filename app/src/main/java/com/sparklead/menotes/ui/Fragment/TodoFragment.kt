@@ -1,4 +1,4 @@
-package com.sparklead.menotes.ui.Fragment
+package com.sparklead.menotes.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
