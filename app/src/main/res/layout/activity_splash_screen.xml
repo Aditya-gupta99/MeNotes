@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:clipToOutline="true"
-    android:background="@drawable/splash_v2"
+    android:background="@color/white"
     >
 
     <View

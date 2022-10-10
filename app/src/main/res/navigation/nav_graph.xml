@@ -13,7 +13,12 @@
         <action
             android:id="@+id/action_notesFragment_to_createNotesFragment"
             app:destination="@id/createNotesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             />
+
     </fragment>
     <fragment
         android:id="@+id/createNotesFragment"
@@ -29,8 +34,6 @@
         android:name="com.sparklead.menotes.ui.fragment.TodoFragment"
         android:label="fragment_todo"
         tools:layout="@layout/fragment_todo" >
-        <action
-            android:id="@+id/action_todoFragment_to_createNotesFragment"
-            app:destination="@id/createNotesFragment" />
+
     </fragment>
 </navigation>

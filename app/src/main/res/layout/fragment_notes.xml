@@ -10,7 +10,7 @@
         android:id="@+id/splash_v2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/splash_v2"
+        android:background="@color/white"
         >
 
         <androidx.cardview.widget.CardView
@@ -39,12 +39,19 @@
                     android:layout_width="15sp"
                     android:layout_height="15sp"
                     android:src="@drawable/search_icon"
-                    android:layout_margin="17.5sp"
+                    android:layout_marginStart="17.5sp"
+                    android:layout_marginTop="17.5sp"
+                    android:layout_marginBottom="17.5sp"
                     />
-                <ImageView
-                    android:layout_width="wrap_content"
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/sv_notes"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/search_text"
+                    app:searchIcon="@null"
+                    app:queryHint="Search for notes"
+                    app:iconifiedByDefault="false"
+                    app:queryBackground="@null"
                     />
             </LinearLayout>
 
@@ -53,7 +60,6 @@
         </androidx.cardview.widget.CardView>
 
         <View
-            android:id="@+id/rectangle_2"
             android:layout_width="600sp"
             android:layout_height="600sp"
             android:background="@drawable/square_2"
@@ -64,6 +70,41 @@
             android:layout_marginTop="500sp"
             android:rotation="45"
             />
+
+        <View
+            android:layout_width="600sp"
+            android:layout_height="600sp"
+            android:background="@drawable/square_2_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="400sp"
+            android:rotation="45"
+            />
+
+        <View
+            android:layout_width="600sp"
+            android:layout_height="600sp"
+            android:background="@drawable/square_2_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="300sp"
+            android:rotation="45"
+            />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_create_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30sp"
+                android:layout_marginBottom="90sp"
+                android:backgroundTint="@color/appMain"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="TODO" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

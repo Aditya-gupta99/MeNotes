@@ -1,50 +1,51 @@
 package com.sparklead.menotes.ui.fragment
 
-import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
-import androidx.fragment.app.findFragment
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sparklead.menotes.R
-import com.sparklead.menotes.databinding.FragmentNotesBinding
-import kotlinx.android.synthetic.main.fragment_create_notes.*
+import com.sparklead.menotes.databinding.FragmentCreateNotesBinding
+
 
 class CreateNotesFragment : Fragment() {
 
-    lateinit var binding: FragmentNotesBinding
+    private lateinit var binding: FragmentCreateNotesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
-        binding = FragmentNotesBinding.inflate(layoutInflater,container,false)
+
+        binding = FragmentCreateNotesBinding.inflate(layoutInflater,container,false)
+
+        setupActionBar()
+
+        val navBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        navBar.visibility = View.GONE
 
         return binding.root
 
-
     }
 
-//    private fun setupActionBar(){
-//
-//        val tb = view?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_create_notes)
-//
-//        (activity as AppCompatActivity).setSupportActionBar(tb)
-//
-//        val actionBar = (activity as AppCompatActivity).supportActionBar
-//        if (actionBar !=null)
-//        {
-//            actionBar.setDisplayHomeAsUpEnabled(true)
-//            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_new_24)
-//        }
-//
-//        tb!!.setNavigationOnClickListener{
-//            requireActivity().onBackPressed()
-//        }
-//    }
+    private fun setupActionBar(){
+
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbarCreateNotes)
+
+        val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
+        if (actionBar !=null)
+        {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_new_24)
+        }
+
+        binding.toolbarCreateNotes.setNavigationOnClickListener{
+            requireActivity().onBackPressed()
+        }
+
+    }
 }

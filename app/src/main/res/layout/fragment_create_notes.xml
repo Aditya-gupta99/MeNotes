@@ -8,10 +8,10 @@
     tools:context=".ui.fragment.NotesFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/splash_v2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/splash_v2"
+        android:id="@+id/create_notes_layout"
+        android:background="@color/white"
         >
 
         <androidx.appcompat.widget.Toolbar
@@ -124,6 +124,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="500sp"
+            android:rotation="45"
+            />
+
+        <View
+            android:layout_width="600sp"
+            android:layout_height="600sp"
+            android:background="@drawable/square_2_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="400sp"
+            android:rotation="45"
+            />
+
+        <View
+            android:layout_width="600sp"
+            android:layout_height="600sp"
+            android:background="@drawable/square_2_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="300sp"
             android:rotation="45"
             />
 
