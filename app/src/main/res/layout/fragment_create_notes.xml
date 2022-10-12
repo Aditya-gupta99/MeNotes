@@ -49,7 +49,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/ev_heading"
+            android:id="@+id/cv_heading"
             android:layout_width="match_parent"
             android:layout_height="50sp"
             android:layout_marginLeft="20sp"
@@ -68,6 +68,7 @@
                 android:layout_height="match_parent">
 
                 <EditText
+                    android:id="@+id/ev_heading"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
@@ -80,7 +81,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/ev_title"
+            android:id="@+id/cv_details"
             android:layout_width="match_parent"
             android:layout_height="400sp"
             android:layout_marginLeft="20sp"
@@ -92,7 +93,7 @@
             app:cardElevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ev_heading"
+            app:layout_constraintTop_toBottomOf="@+id/cv_heading"
             >
 
             <LinearLayout
@@ -101,6 +102,7 @@
                 >
 
                 <EditText
+                    android:id="@+id/ev_details"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textAlignment="textStart"
@@ -151,6 +153,16 @@
             android:rotation="45"
             />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_save_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30sp"
+            android:layout_marginBottom="90sp"
+            android:backgroundTint="@color/appMain"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="TODO" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
