@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -10,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
         app:cardBackgroundColor="@color/semiTransparentColor"
-        app:cardElevation="10sp"
+        app:cardElevation="20sp"
         app:cardCornerRadius="10sp"
         >
 

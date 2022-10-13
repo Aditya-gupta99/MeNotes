@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sparklead.menotes.R
 import com.sparklead.menotes.databinding.FragmentNotesBinding
@@ -36,12 +38,10 @@ class NotesFragment : Fragment() {
         //show notes
         viewModel.getNotes().observe(viewLifecycleOwner) { notesList ->
 
-            binding.rvAllNotes.layoutManager = GridLayoutManager(context, 2)
-            binding.rvAllNotes.adapter = NotesAdapter(context, notesList)
-
+            val staggeredGridLayoutManager = StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
+            binding.rvAllNotes.layoutManager = staggeredGridLayoutManager
+            binding.rvAllNotes.adapter = NotesAdapter(requireContext(), notesList)
         }
-
-
 
         //show navigation bar
         val navBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)

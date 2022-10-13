@@ -18,6 +18,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_notesFragment_to_editNotesFragment"
+            app:destination="@id/editNotesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
 
     </fragment>
     <fragment
@@ -35,5 +43,17 @@
         android:label="fragment_todo"
         tools:layout="@layout/fragment_todo" >
 
+    </fragment>
+    <fragment
+        android:id="@+id/editNotesFragment"
+        android:name="com.sparklead.menotes.ui.fragment.EditNotesFragment"
+        android:label="fragment_edit_notes"
+        tools:layout="@layout/fragment_edit_notes" >
+        <action
+            android:id="@+id/action_editNotesFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+        <argument
+            android:name="data"
+            app:argType="com.sparklead.menotes.ui.model.Notes" />
     </fragment>
 </navigation>

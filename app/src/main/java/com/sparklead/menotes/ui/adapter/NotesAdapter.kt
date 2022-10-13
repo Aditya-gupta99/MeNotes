@@ -3,9 +3,12 @@ package com.sparklead.menotes.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.sparklead.menotes.R
 import com.sparklead.menotes.databinding.ItemNotesBinding
+import com.sparklead.menotes.ui.fragment.NotesFragment
+import com.sparklead.menotes.ui.fragment.NotesFragmentDirections
 import com.sparklead.menotes.ui.model.Notes
 
 class NotesAdapter(val context: Context?, val notesList: List<Notes>) :
@@ -31,7 +34,15 @@ class NotesAdapter(val context: Context?, val notesList: List<Notes>) :
         holder.binding.tvDate.text = data.date
 
         holder.binding.cvNotes.setBackgroundResource(R.color.semiTransparentColor)
-//        holder.binding.cvNotes.elevation = 20f
+//        holder.binding.cvNotes.elevation = 10f
+        holder.binding.cvNotes.cardElevation = 20.1f
+        holder.binding.cvNotes.radius = 20.1f
+
+        holder.binding.cvNotes.setOnClickListener {
+            val action = NotesFragmentDirections.actionNotesFragmentToEditNotesFragment(data)
+            Navigation.findNavController(it).navigate(action)
+        }
+
     }
 
     override fun getItemCount(): Int {
