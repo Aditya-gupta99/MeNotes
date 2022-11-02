@@ -2,17 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
+        android:layout_margin="6sp"
         app:cardBackgroundColor="@color/semiTransparentColor"
         app:cardElevation="20sp"
-        app:cardCornerRadius="10sp"
+        app:cardCornerRadius="12sp"
         >
 
         <LinearLayout
@@ -41,7 +40,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:maxLines="5"
+                android:ellipsize="end"
                 />
 
         </LinearLayout>

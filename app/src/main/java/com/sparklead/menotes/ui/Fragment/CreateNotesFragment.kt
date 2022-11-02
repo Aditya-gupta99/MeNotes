@@ -1,11 +1,9 @@
 package com.sparklead.menotes.ui.fragment
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.text.format.DateFormat
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,17 +19,21 @@ class CreateNotesFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateNotesBinding
     private val viewModel : NotesViewModel by viewModels()
+    private var c = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
+        //Menu
+        setHasOptionsMenu(true)
 
         binding = FragmentCreateNotesBinding.inflate(layoutInflater,container,false)
 
         //action bar
         setupActionBar()
+
 
 
         //Hide navigation bar
@@ -41,9 +43,8 @@ class CreateNotesFragment : Fragment() {
 
         //save button
         binding.fabSaveNotes.setOnClickListener {
-            createNotes(it)
+            createNotes()
         }
-
 
         return binding.root
 
@@ -62,28 +63,71 @@ class CreateNotesFragment : Fragment() {
         binding.toolbarCreateNotes.setNavigationOnClickListener{
             requireActivity().onBackPressed()
         }
+
+        //toolbar
+        binding.toolbarCreateNotes.inflateMenu(R.menu.dashboard_menu)
+        binding.toolbarCreateNotes.setOnMenuItemClickListener {
+            onOptionsItemSelected(it)
+        }
     }
 
-    private fun createNotes(it : View){
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        binding.toolbarCreateNotes.inflateMenu(R.menu.dashboard_menu)
+        binding.toolbarCreateNotes.setOnMenuItemClickListener { menuItem ->
+            onOptionsItemSelected(menuItem)
+        }
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun createNotes(){
 
         val heading = binding.evHeading.text.toString()
         val details = binding.evDetails.text.toString()
 
+        val checkHeading = TextUtils.isEmpty(binding.evHeading.text.toString().trim{it<= ' '})
+        val checkDetails = TextUtils.isEmpty(binding.evDetails.text.toString().trim{it<= ' '})
+
         val d = Date()
         val notesDate : CharSequence = DateFormat.format("MMMM d, yyyy",d.time)
 
-        val data = Notes(
-            null,
-            Heading = heading,
-            details = details,
-            date = notesDate.toString()
-        )
+        if(checkHeading && checkDetails){
+            if(c==0){
+                requireActivity().onBackPressed()
+            }
 
-        viewModel.addNotes(data)
+        }
+        else{
+            val data = Notes(
+                null,
+                Heading = heading,
+                details = details,
+                date = notesDate.toString()
+            )
+
+            viewModel.addNotes(data)
+            if(c==0){
+                requireActivity().onBackPressed()
+            }
+
+        }
+
 
 //        Toast.makeText(context,"Notes Created successfully! ",Toast.LENGTH_SHORT).show()
 
-        requireActivity().onBackPressed()
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_share->{
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestroy() {
+        c = 1
+        createNotes()
+        super.onDestroy()
     }
 }

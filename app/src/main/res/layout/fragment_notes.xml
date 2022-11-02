@@ -99,25 +99,61 @@
             android:id="@+id/rv_all_notes"
             android:layout_width="match_parent"
             android:layout_height="0sp"
-            android:padding="20sp"
             android:layout_marginStart="6sp"
             android:layout_marginTop="10sp"
             android:layout_marginEnd="6sp"
-            app:layout_constraintBottom_toTopOf="@+id/fab_create_notes"
+            android:layout_marginBottom="70sp"
+            android:outlineSpotShadowColor="@color/appMain"
+            android:padding="20sp"
+            android:transitionGroup="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rectangle_1" />
+        
+        <LinearLayout
+            android:id="@+id/ll_fab_add_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30sp"
+            android:layout_marginBottom="90sp"
+            android:gravity="center_vertical"
+            android:animateLayoutChanges="true"
+            android:orientation="horizontal"
+            android:background="@drawable/fab_btn_notes"
+            android:clipToPadding="false"
+            android:elevation="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_create_notes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30sp"
-                android:layout_marginBottom="90sp"
                 android:backgroundTint="@color/appMain"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:contentDescription="TODO" />
+                android:src="@drawable/plus"
+                app:tint="#595959"
+                app:elevation="0sp"
+                app:fabSize="normal"
+                android:contentDescription="TODO"
+                app:borderWidth="0sp"
+                app:useCompatPadding="false"
+                />
+
+            <TextView
+                android:id="@+id/tv_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Notes"
+                android:textColor="#595959"
+                android:paddingStart="0sp"
+                android:paddingEnd="20sp"
+                android:textSize="14sp"
+                />
+
+        </LinearLayout>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

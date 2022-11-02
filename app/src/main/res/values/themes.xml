@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:actionButtonStyle">@style/ActionButton</item>
     </style>
 
     <style name="Theme.MeNotes_dashboard" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -26,7 +27,14 @@
         <!-- Status bar color. -->
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
+        <item name="android:actionButtonStyle">@style/ActionButton</item>
 
     </style>
+
+
+    <style name="ActionButton" parent="@android:style/Widget.ActionButton">
+        <item name="android:drawablePadding">10sp</item>
+    </style>
+
 
 </resources>

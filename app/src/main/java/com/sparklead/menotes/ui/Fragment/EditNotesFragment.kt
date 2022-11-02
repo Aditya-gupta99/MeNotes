@@ -1,15 +1,12 @@
 package com.sparklead.menotes.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sparklead.menotes.R
@@ -31,6 +28,9 @@ class EditNotesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        //Menu
+        setHasOptionsMenu(true)
+
         binding = FragmentEditNotesBinding.inflate(layoutInflater,container,false)
 
         setupActionBar()
@@ -45,9 +45,6 @@ class EditNotesFragment : Fragment() {
         binding.fabEditSaveNotes.setOnClickListener {
             updateNotes()
         }
-
-
-
         return binding.root
     }
 
@@ -96,4 +93,37 @@ class EditNotesFragment : Fragment() {
         super.onDestroy()
     }
 
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        binding.toolbarEditNotes.inflateMenu(R.menu.dashboard_menu)
+        binding.toolbarEditNotes.setOnMenuItemClickListener { menuItem ->
+            onOptionsItemSelected(menuItem)
+        }
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_share->{
+                val heading = binding.evHeading.text.toString()
+                val details = binding.evDetails.text.toString()
+                val send = "$heading\n$details"
+                shareText(send)
+            }
+            R.id.action_delete->{
+                viewModel.deleteNotes(notes.data.id!!)
+                requireActivity().onBackPressed()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun shareText(send: String ) {
+        val txtIntent = Intent(Intent.ACTION_SEND)
+        txtIntent.type = "text/plain"
+//        txtIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
+        txtIntent.putExtra(Intent.EXTRA_TEXT, send)
+        startActivity(Intent.createChooser(txtIntent, "Share"))
+    }
 }

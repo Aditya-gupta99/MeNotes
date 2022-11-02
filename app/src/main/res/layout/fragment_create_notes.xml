@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.NotesFragment">
+    tools:context=".ui.fragment.NotesFragment"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,7 +14,6 @@
         android:id="@+id/create_notes_layout"
         android:background="@color/white"
         >
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_create_notes"
             android:layout_width="match_parent"
@@ -24,26 +24,15 @@
             app:layout_constraintTop_toTopOf="parent"
             >
 
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:id="@+id/tv_user_name"
-                    android:layout_width="0sp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:text="Hi, Aditya"
-                    android:layout_marginStart="6sp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    />
-
-            </LinearLayout>
+                android:text=" "
+                android:layout_marginStart="6sp"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                />
 
         </androidx.appcompat.widget.Toolbar>
 

@@ -23,27 +23,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             >
-
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:layout_width="0sp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:text="Hi, Aditya"
-                    android:layout_marginStart="6sp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    />
-
-            </LinearLayout>
-
+                android:text=" "
+                android:layout_marginStart="6sp"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                />
         </androidx.appcompat.widget.Toolbar>
 
 
