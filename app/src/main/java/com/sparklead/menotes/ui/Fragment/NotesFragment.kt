@@ -70,4 +70,5 @@ class NotesFragment : Fragment() {
 
         return binding.root
     }
+
 }

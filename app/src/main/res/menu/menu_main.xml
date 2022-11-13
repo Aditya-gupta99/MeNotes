@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AppCompatResource">
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_vector"
+        android:title="Search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|always" />
+
+    <item
+        android:id="@+id/change_view"
+        android:icon="@drawable/ic_change_view_vector"
+        android:title="Change view"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/go_to_date"
+        android:showAsAction="never"
+        android:title="Go to date"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/print"
+        android:showAsAction="never"
+        android:title="Print"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/add_birthdays"
+        android:showAsAction="never"
+        android:title="Add birthdays"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_settings_cog_vector"
+        android:title="Settings"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/about"
+        android:title="About"
+        app:showAsAction="ifRoom" />
+</menu>

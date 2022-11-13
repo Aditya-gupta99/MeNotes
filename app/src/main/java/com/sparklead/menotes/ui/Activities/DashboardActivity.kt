@@ -25,8 +25,6 @@ class DashboardActivity : BaseActivity() {
 
         bottomNavigationView.background = null
 
-
-
     }
 
     override fun onStart() {
