@@ -11,8 +11,13 @@ import com.sparklead.menotes.ui.fragment.NotesFragment
 import com.sparklead.menotes.ui.fragment.NotesFragmentDirections
 import com.sparklead.menotes.ui.model.Notes
 
-class NotesAdapter(val context: Context?, val notesList: List<Notes>) :
+class NotesAdapter(val context: Context?, private var notesList: List<Notes>) :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+
+    fun searchNotes(filterNotes : List<Notes>){
+        notesList = filterNotes
+        notifyDataSetChanged()
+    }
 
     inner class NotesViewHolder(val binding: ItemNotesBinding) : RecyclerView.ViewHolder(binding.root)
 

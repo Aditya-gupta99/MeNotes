@@ -13,6 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:actionButtonStyle">@style/ActionButton</item>
+        <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
     <style name="Theme.MeNotes_dashboard" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -25,15 +26,25 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
         <item name="android:actionButtonStyle">@style/ActionButton</item>
+        <item name="android:windowTranslucentNavigation">false</item>
 
     </style>
 
 
     <style name="ActionButton" parent="@android:style/Widget.ActionButton">
         <item name="android:drawablePadding">10sp</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Modal</item>
+    </style>
+
+    <style name="Modal" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/dialog_background</item>
     </style>
 
 

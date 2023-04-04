@@ -37,8 +37,8 @@ class CreateNotesFragment : Fragment() {
 
 
         //Hide navigation bar
-        val navBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        navBar.visibility = View.GONE
+//        val navBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+//        navBar.visibility = View.GONE
 
 
         //save button

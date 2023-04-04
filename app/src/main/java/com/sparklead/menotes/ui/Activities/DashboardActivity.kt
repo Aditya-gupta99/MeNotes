@@ -18,17 +18,17 @@ class DashboardActivity : BaseActivity() {
 
         supportActionBar?.hide()
 
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+//        )
 
-        bottomNavigationView.background = null
+//        bottomNavigationView.background = null
 
     }
 
     override fun onStart() {
         super.onStart()
-        bottomNavigationView.setupWithNavController(fragmentContainerView.findNavController())
+//        bottomNavigationView.setupWithNavController(fragmentContainerView.findNavController())
     }
 }

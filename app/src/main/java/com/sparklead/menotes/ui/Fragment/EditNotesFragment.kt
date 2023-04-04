@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.*
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -36,8 +37,8 @@ class EditNotesFragment : Fragment() {
         setupActionBar()
 
         //Hide navigation bar
-        val navBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        navBar.visibility = View.GONE
+//        val navBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+//        navBar.visibility = View.GONE
 
         binding.evHeading.setText(notes.data.Heading)
         binding.evDetails.setText(notes.data.details)
@@ -112,8 +113,23 @@ class EditNotesFragment : Fragment() {
                 shareText(send)
             }
             R.id.action_delete->{
-                viewModel.deleteNotes(notes.data.id!!)
-                requireActivity().onBackPressed()
+                val dialogBuilder = android.app.AlertDialog.Builder(context,R.style.BottomSheetStyle)
+                val view = layoutInflater.inflate(R.layout.dialog_delete_notes, null)
+                val yes = view.findViewById<TextView>(R.id.tv_yes)
+                val no = view.findViewById<TextView>(R.id.tv_no)
+                dialogBuilder.setView(view)
+                val alertDialog = dialogBuilder.create()
+                alertDialog.show()
+                alertDialog.setCancelable(true)
+                yes.setOnClickListener {
+                    viewModel.deleteNotes(notes.data.id!!)
+                    requireActivity().onBackPressed()
+                    alertDialog.dismiss()
+                }
+                no.setOnClickListener {
+                    alertDialog.dismiss()
+                }
+
             }
         }
         return super.onOptionsItemSelected(item)
