@@ -1,5 +1,6 @@
 package com.sparklead.menotes.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.format.DateFormat
@@ -20,6 +21,7 @@ class CreateNotesFragment : Fragment() {
     private lateinit var binding: FragmentCreateNotesBinding
     private val viewModel : NotesViewModel by viewModels()
     private var c = 0
+    private var d = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +45,7 @@ class CreateNotesFragment : Fragment() {
 
         //save button
         binding.fabSaveNotes.setOnClickListener {
+            d=0
             createNotes()
         }
 
@@ -93,23 +96,24 @@ class CreateNotesFragment : Fragment() {
         if(checkHeading && checkDetails){
             if(c==0){
                 requireActivity().onBackPressed()
+                return
             }
+        }
+        else
+        {
 
         }
-        else{
             val data = Notes(
                 null,
                 Heading = heading,
                 details = details,
-                date = notesDate.toString()
+                date = notesDate.toString(),
+                system = d.time.toString()
             )
-
             viewModel.addNotes(data)
             if(c==0){
                 requireActivity().onBackPressed()
             }
-
-        }
 
 
 //        Toast.makeText(context,"Notes Created successfully! ",Toast.LENGTH_SHORT).show()
@@ -120,6 +124,10 @@ class CreateNotesFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.action_share->{
+                val heading = binding.evHeading.text.toString()
+                val details = binding.evDetails.text.toString()
+                val send = "$heading\n$details"
+                shareText(send)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -127,7 +135,41 @@ class CreateNotesFragment : Fragment() {
 
     override fun onDestroy() {
         c = 1
-        createNotes()
+        if(d==1){
+            destroySave()
+        }
         super.onDestroy()
+    }
+
+    private fun destroySave(){
+        val heading = binding.evHeading.text.toString()
+        val details = binding.evDetails.text.toString()
+
+        val checkHeading = TextUtils.isEmpty(binding.evHeading.text.toString().trim{it<= ' '})
+        val checkDetails = TextUtils.isEmpty(binding.evDetails.text.toString().trim{it<= ' '})
+
+        val d = Date()
+        val notesDate : CharSequence = DateFormat.format("MMMM d, yyyy",d.time)
+
+        if(checkHeading && checkDetails){
+            return
+        }
+        else{
+            val data = Notes(
+                null,
+                Heading = heading,
+                details = details,
+                date = notesDate.toString(),
+                system = d.time.toString()
+            )
+            viewModel.addNotes(data)
+        }
+    }
+    private fun shareText(send: String ) {
+        val txtIntent = Intent(Intent.ACTION_SEND)
+        txtIntent.type = "text/plain"
+//        txtIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
+        txtIntent.putExtra(Intent.EXTRA_TEXT, send)
+        startActivity(Intent.createChooser(txtIntent, "Share"))
     }
 }

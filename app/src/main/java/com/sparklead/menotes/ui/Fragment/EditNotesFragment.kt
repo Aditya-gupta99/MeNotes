@@ -76,7 +76,8 @@ class EditNotesFragment : Fragment() {
             notes.data.id,
             heading,
             details,
-            notesDate.toString()
+            notesDate.toString(),
+            system = d.time.toString()
         )
 
         viewModel.update(data)

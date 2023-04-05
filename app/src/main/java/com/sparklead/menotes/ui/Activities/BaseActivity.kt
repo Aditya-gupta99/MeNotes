@@ -69,7 +69,7 @@ open class BaseActivity : AppCompatActivity() {
 
         Toast.makeText(
             this,
-            "Please click back again to exit",
+            "Please hit back again to exit",
             Toast.LENGTH_SHORT
         ).show()
 

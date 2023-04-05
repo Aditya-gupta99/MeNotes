@@ -29,7 +29,6 @@ class NotesFragment : Fragment() {
     lateinit var binding : FragmentNotesBinding
     private val viewModel : NotesViewModel by viewModels()
     private lateinit var allNotesList : List<Notes>
-    private lateinit var adapter : NotesAdapter
 
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -70,7 +69,6 @@ class NotesFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 notesFilter(newText!!)
-                Log.e("@@@",newText)
                 return true
             }
 
@@ -78,10 +76,10 @@ class NotesFragment : Fragment() {
 
         //show notes
         viewModel.getNotes().observe(viewLifecycleOwner) { notesList ->
+
             val staggeredGridLayoutManager = StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
             binding.rvAllNotes.layoutManager = staggeredGridLayoutManager
-            binding.rvAllNotes.adapter = NotesAdapter(requireContext(), notesList)
-            adapter = NotesAdapter(requireContext(),notesList)
+            binding.rvAllNotes.adapter = NotesAdapter(requireContext(), notesList.sortedByDescending { it.system })
             allNotesList = notesList
         }
 
@@ -102,6 +100,6 @@ class NotesFragment : Fragment() {
         }
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
         binding.rvAllNotes.layoutManager = staggeredGridLayoutManager
-        binding.rvAllNotes.adapter = NotesAdapter(requireContext(), filterNotesList)
+        binding.rvAllNotes.adapter = NotesAdapter(requireContext(), filterNotesList.sortedByDescending { it.system })
     }
 }

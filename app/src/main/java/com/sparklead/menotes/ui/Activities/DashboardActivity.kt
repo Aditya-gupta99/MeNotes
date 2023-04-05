@@ -27,8 +27,12 @@ class DashboardActivity : BaseActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-//        bottomNavigationView.setupWithNavController(fragmentContainerView.findNavController())
-    }
+//    override fun onStart() {
+//        super.onStart()
+////        bottomNavigationView.setupWithNavController(fragmentContainerView.findNavController())
+//    }
+
+//    override fun onBackPressed() {
+//        doubleBackToExit()
+//    }
 }

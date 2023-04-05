@@ -25,22 +25,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:fontFamily="@font/poppins_light"
                 />
 
             <TextView
                 android:id="@+id/tv_Heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 />
 
             <TextView
                 android:id="@+id/tv_Details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:maxLines="5"
                 android:ellipsize="end"
                 />

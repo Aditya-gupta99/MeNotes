@@ -14,4 +14,5 @@ class Notes(
     var Heading: String,
     var details : String,
     var date : String,
+    var system : String
 ):Parcelable
